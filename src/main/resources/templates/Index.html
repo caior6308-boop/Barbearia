@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" th:href="@{/image/LOGO JHON BARBEARIA 2.png}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhon Barbearia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="home-bg">
+
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div th:if="${mensagemSucesso != null}" class="alert alert-success alert-dismissible fade show text-center fw-bold m-0" role="alert" style="border-radius: 0; z-index: 9999;">
+    <span th:text="${mensagemSucesso}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<header id="home">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="image/corte 1.jpeg" class="d-block w-100 hero-img" alt="Corte masculino">
+            </div>
+            <div class="carousel-item">
+                <img src="image/corte 3.jpeg" class="d-block w-100 hero-img" alt="Modelo de corte">
+            </div>
+            <div class="carousel-item">
+                <img src="image/corte 4.jpeg" class="d-block w-100 hero-img" alt="Corte finalizado">
+            </div>
+        </div>
+
+        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
+            <button class="btn btn-warning btn-lg px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalAgendamento">
+                Agendar Agora
+            </button>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" aria-label="Anterior">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" aria-label="Proximo">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</header>
+
+<section id="servicos" class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <h2 class="section-title text-center">Serviços</h2>
+                <div class="card p-4 shadow mx-auto service-card">
+                    <div class="d-flex flex-column align-items-center gap-3">
+                        <th:block th:each="servico : ${listaServicos}">
+                            <button class="btn btn-warning w-100 py-2 fw-bold"
+                                    th:text="${servico.nome} + ' - R$ ' + ${#numbers.formatDecimal(servico.preco, 1, 'POINT', 2, 'COMMA')}">
+                            </button>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+            <div id="horarios" class="col-md-6">
+                <h2 class="section-title text-center">Horários de Funcionamento</h2>
+                <div class="card shadow horario-card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between"><span>Segunda-feira</span><strong>09:00 - 19:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Terça-feira</span><strong>09:00 - 20:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Quarta-feira</span><strong>09:00 - 21:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Quinta-feira</span><strong>09:00 - 21:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Sexta-feira</span><strong>09:00 - 21:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Sábado</span><strong>09:00 - 20:00</strong></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Domingo</span><strong>Fechado</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="galeria" class="container py-5">
+    <h2 class="section-title text-center">Modelos de Cortes</h2>
+    <div class="row g-3">
+        <div class="col-md-4"><img src="image/corte 3.jpeg" class="img-fluid rounded" alt="Corte 1"></div>
+        <div class="col-md-4"><img src="image/corte 4.jpeg" class="img-fluid rounded" alt="Corte 2"></div>
+        <div class="col-md-4"><img src="image/corte 1.jpeg" class="img-fluid rounded" alt="Corte 3"></div>
+    </div>
+</section>
+
+<section id="sobre" class="container my-5">
+    <h2 class="section-title text-center">Sobre Nós</h2>
+    <p class="text-center">A Barbearia Jhon do Corte nasceu com o propósito de oferecer muito mais do que um simples corte: aqui, cada cliente vive uma experiência completa. Com estilo, personalidade e atendimento de excelência, unimos tradição e modernidade para entregar serviços de qualidade, ambiente confortável e resultados impecáveis.</p>
+</section>
+
+<div class="modal fade" id="modalAgendamento" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Escolha seu Barbeiro</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-5 text-center" th:each="barbeiro : ${listaBarbeiros}">
+                        <img th:src="@{'/' + ${barbeiro.foto}}" width="140" height="140" class="rounded-circle mb-2" style="object-fit:cover" alt="Barbeiro">
+                        <h5 class="fw-bold" th:text="${barbeiro.nome}">Nome do Barbeiro</h5>
+                        <p class="text-muted" th:text="${barbeiro.especialidade}">Especialidade</p>
+                        <a th:href="@{/agendamento(barbeiroId=${barbeiro.id})}" class="btn btn-warning w-100">
+                            Agendar com <span th:text="${barbeiro.nome}"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="endereco" class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center">Endereço</h2>
+        <div class="card p-4 shadow mx-auto text-center" style="max-width: 600px;">
+            <h5 class="fw-bold mb-3">Jhon Barbearia</h5>
+            <p class="mb-1">Avenida Moçambique, 65A</p>
+            <p class="mb-1">Bairro Anjo da Guarda</p>
+            <p class="mb-1">São Luís - Maranhão</p>
+            <a href="https://maps.app.goo.gl/peshB2hqDgWtC8VdA" class="btn btn-warning fw-bold" target="_blank" rel="noopener">
+                Ver no Google Maps
+            </a>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragments :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

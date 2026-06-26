@@ -1,0 +1,850 @@
+/* ============================================
+   JHON BARBEARIA — Design System
+   Modern Premium Barbershop
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --gold: #c9a04e;
+  --gold-light: #dbb45c;
+  --gold-dark: #a8833a;
+  --gold-soft: rgba(201, 160, 78, 0.08);
+  --gold-glow: rgba(201, 160, 78, 0.2);
+
+  --bg: #faf9f7;
+  --bg-card: #ffffff;
+  --bg-secondary: #f3f1ee;
+  --bg-dark: #0f0f1a;
+  --bg-dark-card: #1a1a2e;
+  --bg-dark-elevated: #22223a;
+
+  --text: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-white: #f5f0eb;
+  --text-white-muted: #a09890;
+
+  --border: #e5e7eb;
+  --border-light: #f0efed;
+  --border-dark: #2a2a3e;
+  --border-focus: var(--gold);
+
+  --success: #059669;
+  --success-bg: #ecfdf5;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --info: #2563eb;
+  --info-bg: #eff6ff;
+
+  --shadow-sm: 0 1px 3px rgba(15, 15, 26, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 15, 26, 0.08);
+  --shadow-lg: 0 8px 32px rgba(15, 15, 26, 0.1);
+  --shadow-gold: 0 4px 20px rgba(201, 160, 78, 0.25);
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --navbar-height: 64px;
+}
+
+/* ========== RESET & BASE ========== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: var(--navbar-height);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--gold-dark);
+}
+
+/* ========== TYPOGRAPHY ========== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* ========== PAGE BACKGROUNDS ========== */
+
+body.home-bg {
+  background: var(--bg);
+}
+
+body.login-bg {
+  background: linear-gradient(135deg, rgba(15, 15, 26, 0.92), rgba(15, 15, 26, 0.85)), url("/image/corte 1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  padding-top: 0;
+}
+
+body.agendamento-bg {
+  background: linear-gradient(135deg, #faf9f7, #f3f1ee);
+}
+
+body.agendamento-bg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/image/LOGO%20JHON%20BARBEARIA%202.png");
+  background-repeat: repeat;
+  background-size: 120px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.agendamento-bg main,
+.agendamento-bg .container {
+  position: relative;
+  z-index: 1;
+}
+
+body.admin-bg {
+  background: #f4f6f9;
+}
+
+/* ========== NAVBAR ========== */
+
+.navbar {
+  height: var(--navbar-height);
+  background: rgba(15, 15, 26, 0.95) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 1rem;
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.navbar-brand img {
+  height: 36px;
+  width: auto;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: rgba(245, 240, 235, 0.75) !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.navbar .nav-link:hover {
+  color: var(--gold) !important;
+  background: rgba(201, 160, 78, 0.08);
+}
+
+.navbar .nav-link:active {
+  background: rgba(201, 160, 78, 0.15);
+}
+
+/* ========== BUTTONS ========== */
+
+.btn {
+  font-weight: 600;
+  border-radius: var(--radius);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  transition: all var(--transition);
+  border-width: 2px;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-warning {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0f0f1a;
+}
+
+.btn-warning:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #0f0f1a;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-warning:active {
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+}
+
+.btn-outline-warning {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn-outline-warning:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0f0f1a;
+}
+
+.btn-dark {
+  background: #0f0f1a;
+  border-color: #0f0f1a;
+}
+
+.btn-dark:hover {
+  background: #1a1a2e;
+  border-color: #1a1a2e;
+}
+
+.btn-outline-dark {
+  border-color: #1a1a2e;
+  color: #1a1a2e;
+}
+
+.btn-outline-dark:hover {
+  background: #1a1a2e;
+  border-color: #1a1a2e;
+  color: #fff;
+}
+
+.btn-outline-danger:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.btn-lg {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ========== CARDS ========== */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card.shadow {
+  box-shadow: var(--shadow-md);
+}
+
+.card.shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========== LOGIN CARD ========== */
+
+.login-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-xl);
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.logo-login {
+  width: 100px;
+  display: block;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--gold-soft);
+}
+
+/* ========== FORMS ========== */
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-control,
+.form-select {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  transition: all var(--transition);
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-soft);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control-lg {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.form-control-sm {
+  padding: 0.375rem 0.625rem;
+  font-size: 0.8125rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 4px var(--gold-soft);
+  border-color: var(--gold);
+}
+
+.form-section {
+  display: none;
+  animation: fadeSlideIn 0.35s ease-out;
+}
+
+.form-section.active {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== ALERTS ========== */
+
+.alert {
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.875rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.alert-success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.alert-danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.alert-info {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+/* ========== HOME / HERO ========== */
+
+.hero-img {
+  height: 420px;
+  object-fit: cover;
+  width: 100%;
+  filter: brightness(0.85);
+}
+
+#carouselExample {
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(15, 15, 26, 0.5);
+  border-radius: 50%;
+  padding: 1.5rem;
+  background-size: 50%;
+}
+
+/* ========== SERVICE CARD ========== */
+
+.service-card {
+  max-width: 500px;
+  border: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.service-card .btn-warning {
+  border-radius: var(--radius) !important;
+  font-size: 0.9375rem;
+  padding: 0.75rem;
+}
+
+/* ========== HORARIOS ========== */
+
+.horario-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.horario-card .list-group-item {
+  padding: 0.75rem 1.25rem;
+  border-color: var(--border-light);
+  transition: background var(--transition);
+}
+
+.horario-card .list-group-item:hover {
+  background: var(--gold-soft);
+}
+
+/* ========== GALERIA ========== */
+
+#galeria img {
+  height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  width: 100%;
+  transition: all var(--transition-slow);
+  filter: brightness(0.9);
+}
+
+#galeria img:hover {
+  transform: scale(1.02);
+  filter: brightness(1);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========== ENDERECO ========== */
+
+#endereco .card {
+  border: 1px solid var(--gold);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+}
+
+/* ========== ADMIN DASHBOARD ========== */
+
+.admin-shell {
+  max-width: 1360px;
+}
+
+.metric {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  min-height: 124px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.metric span,
+.metric small {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric strong {
+  display: block;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.admin-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-panel h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.admin-panel input,
+.admin-panel select {
+  min-width: 120px;
+}
+
+/* ========== TABLES ========== */
+
+.table {
+  margin-bottom: 0;
+  font-size: 0.875rem;
+}
+
+.table thead th {
+  background: #f8f7f5;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.table tbody td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-color: var(--border-light);
+}
+
+.table-hover tbody tr:hover {
+  background: var(--gold-soft);
+}
+
+.table-dark thead th {
+  background: var(--bg-dark);
+  color: var(--text-white);
+  border-color: var(--border-dark);
+}
+
+/* ========== BADGES ========== */
+
+.badge {
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+}
+
+.badge.bg-success {
+  background: var(--success) !important;
+}
+
+.badge.bg-danger {
+  background: var(--danger) !important;
+}
+
+.badge.bg-dark {
+  background: var(--text) !important;
+}
+
+.badge.bg-light {
+  background: var(--bg-secondary) !important;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ========== HORARIOS GRID ========== */
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 0.5rem;
+}
+
+.horario-btn {
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0.5rem;
+  transition: all var(--transition);
+}
+
+.horario-btn.active {
+  background: var(--gold) !important;
+  color: #0f0f1a !important;
+  border-color: var(--gold) !important;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ========== LIST GROUP ========== */
+
+.list-group-item {
+  padding: 0.75rem 1rem;
+  border-color: var(--border-light);
+  transition: background var(--transition);
+}
+
+.list-group-item:hover {
+  background: var(--gold-soft);
+}
+
+.list-group-item .badge {
+  font-size: 0.8125rem;
+}
+
+/* ========== MODAL ========== */
+
+.modal-content {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-header .modal-title {
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal .btn-close {
+  transition: all var(--transition);
+}
+
+/* ========== DROPDOWN ========== */
+
+.dropdown-menu {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.dropdown-item:hover {
+  background: var(--gold-soft);
+  color: var(--gold-dark);
+}
+
+.dropdown-item.text-danger:hover {
+  background: var(--danger-bg);
+}
+
+.dropdown-divider {
+  margin: 0.375rem 0;
+  border-color: var(--border-light);
+}
+
+/* ========== FOOTER ========== */
+
+footer {
+  background: var(--bg-dark) !important;
+  color: var(--text-white-muted);
+  font-size: 0.875rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border-dark);
+}
+
+/* ========== SCROLLBAR ========== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ========== UTILITIES ========== */
+
+.fade-in {
+  animation: fadeSlideIn 0.4s ease-out;
+}
+
+.hover-lift {
+  transition: all var(--transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.gold-border {
+  border-color: var(--gold) !important;
+}
+
+.gold-bg-soft {
+  background: var(--gold-soft);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 56px;
+  }
+
+  body {
+    padding-top: var(--navbar-height);
+  }
+
+  .hero-img {
+    height: 260px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .login-card {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .admin-panel {
+    padding: 1rem;
+  }
+
+  .metric strong {
+    font-size: 1.35rem;
+  }
+
+  .horarios-grid {
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  }
+
+  #galeria img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .navbar-brand img {
+    height: 30px;
+  }
+
+  .btn-lg {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}

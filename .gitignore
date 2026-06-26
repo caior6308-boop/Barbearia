@@ -1,0 +1,35 @@
+### Java / Maven ###
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.log
+*.tmp
+hs_err_pid*
+replay_pid*
+
+### Maven Wrapper ###
+!mvnw
+!mvnw.cmd
+!/.mvn/wrapper/
+
+### IDE ###
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+*.prefs
+
+### OS ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+### Environment ###
+.env
+*.env.local
