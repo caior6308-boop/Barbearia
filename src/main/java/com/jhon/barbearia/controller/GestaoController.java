@@ -24,6 +24,7 @@ public class GestaoController {
             Model model
     ) {
         LocalDate dataConsulta = data == null ? LocalDate.now() : data;
+        model.addAttribute("section", "agenda");
         model.addAttribute("dataSelecionada", dataConsulta);
         model.addAttribute("agendamentos", agendamentoRepository.findByDataHoraBetweenOrderByDataHoraAsc(
                 dataConsulta.atStartOfDay(),

@@ -46,6 +46,7 @@ public class AdminController {
             return "redirect:/login";
         }
 
+        model.addAttribute("section", "dashboard");
         model.addAttribute("resumo", dashboardService.montarResumo());
         model.addAttribute("agendamentos", agendamentoRepository.findAllByOrderByDataHoraDesc());
         model.addAttribute("barbeiros", barbeiroRepository.findAll());
